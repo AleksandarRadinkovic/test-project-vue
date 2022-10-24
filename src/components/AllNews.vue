@@ -9,14 +9,14 @@
               slot-scope="{ hover }"
               :class="`elevation-${hover ? 8 : 2}`"
               style="cursor: pointer"
-              @click="$router.push(`/news/${news.id}/show`).catch(() => {})"
+              
             >
               <div
                 class="cover-image"
                 :style="{ background: `url(${prevImage})` }"
               ></div>
               <div class="pa-4">
-                <h2 class="text-h5 mb-2">{{ news.title }}</h2>
+                <h2 @click="$router.push(`/news/${news.id}/show`).catch(() => {})" class="text-h5 mb-2">{{ news.title }}</h2>
                 <div class="body-2">{{ news.body }}</div>
               </div>
               <div>

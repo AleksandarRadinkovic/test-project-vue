@@ -10,19 +10,19 @@
 
     <v-main>
       <div id="app">
-        <LogIn />
+        <router-view/>
       </div>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import LogIn from "./components/LogIn.vue";
+
 
 export default {
   name: "App",
   components: {
-    LogIn,
+
   },
 };
 </script>

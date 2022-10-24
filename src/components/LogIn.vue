@@ -50,13 +50,12 @@ export default {
       } else {
         console.log("nije uredu");
       }
-      console.log(result);
     },
   },
   mounted() {
     let user = localStorage.getItem("user-info");
     if (user) {
-      //.. pushaj na pocetnu
+      this.$router.push({name:"Home"});
     }
   },
 };

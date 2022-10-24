@@ -4,10 +4,8 @@
       <div class="d-flex align-center">
         <v-toolbar-title>News App</v-toolbar-title>
       </div>
-
       <v-spacer></v-spacer>
     </v-app-bar>
-
     <v-main>
       <div id="app">
         <router-view/>

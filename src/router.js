@@ -8,20 +8,19 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: "/Home",
+      path: "/",
       name: "Home",
       component: () => import("@/components/AllNews.vue"),
     },
     {
-      path: "/news/:id/show",
-      name: "news_details",
-      component: () => import("@/components/NewsDetails.vue"),
-    },
-    {
-      path: "/",
-      name: "login",
+      path: "/login",
+      name: "Login",
       component: () => import("@/components/LogIn.vue"),
     },
-
+    {
+      path: "/news/:id/",
+      name: "news_details",
+      component: () => import("@/components/NewsDetails.vue"),
+    }
   ],
 });

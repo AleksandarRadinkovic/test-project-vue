@@ -6,15 +6,12 @@
     </v-btn>
     <v-container>
       <v-row>
-        <template v-if="item">
+        <template >
           <v-col cols="12">
-            <h2 class="text-h3">{{ item.title }}</h2>
+            <h2  class="text-h3">{{ title }}</h2>
+            <v-spacer></v-spacer>
 
-            <div>
-              <v-img :src="$prevImage" class="my-3" cover height="200" />
-            </div>
-
-            <div class="text-body-2">{{ item.body }}</div>
+            <div class="text-body-2">{{ body }}</div>
           </v-col>
         </template>
       </v-row>
@@ -23,26 +20,19 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import axios from "axios";
 export default {
   name: "NewsDetails",
-  data: () => ({
-    prevImage: require("../assets/news-prev.png"),
-  }),
-  mounted() {
-    if (this.news === null) this.getAllNews();
+  data() {
+    return {
+        title: "",
+        body: "",
+    };
   },
-  methods: {
-    ...mapActions(["getNews"]),
-  },
-  computed: {
-    item: function () {
-      if (this.news && this.news.some((i) => i.id == this.$route.params.id)) {
-        return this.news.find((i) => i.id == this.$route.params.id);
-      } else {
-        return null;
-      }
-    },
+  async mounted() {
+    const result = await axios.get(`https://jsonplaceholder.typicode.com/posts/`+this.$route.params.id);
+    this.title = result.data.title;
+    this.body = result.data.body;
   },
 };
 </script>

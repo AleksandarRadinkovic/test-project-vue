@@ -9,7 +9,7 @@ export default new Router({
   routes: [
     {
       path: "/",
-      name: "all_news",
+      name: "Home",
       component: () => import("@/components/AllNews.vue"),
     },
     {
@@ -17,5 +17,11 @@ export default new Router({
       name: "news_details",
       component: () => import("@/components/NewsDetails.vue"),
     },
+    {
+      path: "/news/LogIn",
+      name: "login",
+      component: () => import("@/components/LogIn.vue"),
+    },
+
   ],
 });

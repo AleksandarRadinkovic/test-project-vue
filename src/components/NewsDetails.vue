@@ -6,9 +6,9 @@
     </v-btn>
     <v-container>
       <v-row>
-        <template >
+        <template>
           <v-col cols="12">
-            <h2  class="text-h3">{{ title }}</h2>
+            <h2 class="text-h3">{{ title }}</h2>
             <v-spacer></v-spacer>
 
             <div class="text-body-2">{{ body }}</div>
@@ -25,12 +25,18 @@ export default {
   name: "NewsDetails",
   data() {
     return {
-        title: "",
-        body: "",
+      title: "",
+      body: "",
     };
   },
   async mounted() {
-    const result = await axios.get(`https://jsonplaceholder.typicode.com/posts/`+this.$route.params.id);
+    let user = localStorage.getItem("user-info");
+    if (!user) {
+      this.$router.push({ name: "Login" });
+    }
+    const result = await axios.get(
+      `https://jsonplaceholder.typicode.com/posts/` + this.$route.params.id
+    );
     this.title = result.data.title;
     this.body = result.data.body;
   },

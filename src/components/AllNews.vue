@@ -38,7 +38,11 @@
                     aria-hidden="true"
                     v-on:click="deleteNews(news.id)"
                   ></i>
-                  <i class="fa fa-edit" aria-hidden="true"></i>
+                  <i
+                    class="fa fa-edit"
+                    aria-hidden="true"
+                    @click="$router.push(`/update/${news.id}/`).catch(() => {})"
+                  ></i>
                 </v-row>
               </div>
             </v-card>

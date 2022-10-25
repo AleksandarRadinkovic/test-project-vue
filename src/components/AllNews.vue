@@ -1,6 +1,10 @@
 <template>
   <v-container>
-    <AddNews />
+    <v-row align="center" justify="space-between">
+      <AddNews style="padding-top: 10px" />
+      <v-btn depressed color="error" v-on:click="logOut"> Log Out </v-btn>
+    </v-row>
+
     <v-row>
       <template>
         <v-col v-for="(news, index) in allNews" cols="4" :key="index">
@@ -9,23 +13,32 @@
               slot-scope="{ hover }"
               :class="`elevation-${hover ? 8 : 2}`"
               style="cursor: pointer"
-              
             >
               <div
                 class="cover-image"
                 :style="{ background: `url(${prevImage})` }"
               ></div>
               <div class="pa-4">
-                <h2 @click="$router.push(`/news/${news.id}/`).catch(() => {})" class="text-h5 mb-2">{{ news.title }}</h2>
+                <h2
+                  @click="$router.push(`/news/${news.id}/`).catch(() => {})"
+                  class="text-h5 mb-2"
+                >
+                  {{ news.title }}
+                </h2>
                 <div class="body-2">{{ news.body }}</div>
               </div>
               <div>
-                <v-row justify="center">
+                <v-row
+                  style="padding-bottom: 10px"
+                  align="center"
+                  justify="space-around"
+                >
                   <i
                     class="fa fa-trash"
                     aria-hidden="true"
                     v-on:click="deleteNews(news.id)"
                   ></i>
+                  <i class="fa fa-edit" aria-hidden="true"></i>
                 </v-row>
               </div>
             </v-card>
@@ -49,6 +62,10 @@ export default {
   }),
   methods: {
     ...mapActions(["getNews", "deleteNews"]),
+    logOut() {
+      localStorage.clear();
+      this.$router.push({ name: "Login" });
+    },
   },
   computed: mapGetters(["allNews"]),
   created() {
@@ -57,9 +74,9 @@ export default {
   mounted() {
     let user = localStorage.getItem("user-info");
     if (!user) {
-      this.$router.push({name:"Login"});
+      this.$router.push({ name: "Login" });
     }
-  }
+  },
 };
 </script>
 

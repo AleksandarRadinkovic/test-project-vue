@@ -17,13 +17,15 @@ const actions = {
     );
     commit("setNews", response.data);
   },
-  async addNews({ commit }, title, body) {
+
+  async addNews({ commit }, { title, body }) {
     const response = await axios.post(
       `https://jsonplaceholder.typicode.com/posts`,
       { title: title, body: body }
     );
     commit("addNews", response.data);
   },
+
   async deleteNews({ commit }, id) {
     await axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`);
     commit("removeNews", id);

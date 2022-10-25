@@ -49,8 +49,7 @@ export default {
   methods: {
     ...mapActions(["addNews"]),
     onSubmit() {
-      this.addNews(this.title, this.body);
-      console.log(this.body);
+      this.addNews({ title: this.title, body: this.body });
       this.title = "";
       this.body = "";
     },

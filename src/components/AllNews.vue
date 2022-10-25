@@ -7,7 +7,7 @@
 
     <v-row>
       <template>
-        <v-col v-for="(news, index) in allNews" cols="4" :key="index">
+        <v-col v-for="(news, index) in allNews" cols="12" sm="4" :key="index">
           <v-hover>
             <v-card
               slot-scope="{ hover }"
@@ -23,9 +23,11 @@
                   @click="$router.push(`/news/${news.id}/`).catch(() => {})"
                   class="text-h5 mb-2"
                 >
-                  {{ news.title }}
+                  {{ news.title.charAt(0).toUpperCase() + news.title.slice(1) }}
                 </h2>
-                <div class="body-2">{{ news.body }}</div>
+                <div class="body-2">
+                  {{ news.body.charAt(0).toUpperCase() + news.body.slice(1) }}
+                </div>
               </div>
               <div>
                 <v-row
@@ -63,6 +65,7 @@ export default {
   name: "AllNews",
   data: () => ({
     prevImage: require("../assets/news-prev.png"),
+    itemsPerPage: 6,
   }),
   methods: {
     ...mapActions(["getNews", "deleteNews"]),
@@ -75,6 +78,7 @@ export default {
   created() {
     this.getNews();
   },
+
   mounted() {
     let user = localStorage.getItem("user-info");
     if (!user) {

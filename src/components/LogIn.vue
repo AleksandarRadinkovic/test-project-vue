@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="imgcontainer">
-      <img src="../assets/news-prev.png" alt="Avatar" class="avatar" />
+      <img src="../assets/logo1.png" alt="Avatar" class="avatar" />
     </div>
 
     <div class="container">
@@ -45,7 +45,7 @@ export default {
       if (result.status == 200 && result.data.length > 0) {
         {
           localStorage.setItem("user-info", JSON.stringify(result.data));
-          this.$router.push({name:'Home'});
+          this.$router.push({ name: "Home" });
         }
       } else {
         console.log("nije uredu");
@@ -55,7 +55,7 @@ export default {
   mounted() {
     let user = localStorage.getItem("user-info");
     if (user) {
-      this.$router.push({name:"Home"});
+      this.$router.push({ name: "Home" });
     }
   },
 };
@@ -99,13 +99,18 @@ button:hover {
 
 .imgcontainer {
   text-align: center;
-  margin: 24px 0 12px 0;
-  max-width: 100%;
+  width: 100%;
+  max-width: 500px;
+  background-color: #1976d2;
+  display: block;
+  margin: 0 auto;
+  margin-top: 15px;
+  padding: 30px;
 }
 
 img.avatar {
-  width: 300px;
-  border-radius: 40%;
+  width: 250px;
+  height: 100px;
   display: block;
   margin: 0 auto;
   text-align: center;

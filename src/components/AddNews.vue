@@ -11,12 +11,24 @@
         <v-card-title class="text-h5 blue lighten-2">
           ADD NEW POST
         </v-card-title>
+        <v-container>
+          <v-row>
+            <v-col cols="12">
+              <v-text-field
+                label="Title"
+                v-model="title"
+                required
+              ></v-text-field>
+              <v-text-field
+                label="Content"
+                v-model="body"
+                required
+              ></v-text-field>
 
-        <v-text-field v-model="title" required></v-text-field>
-        <v-text-field v-model="body" required></v-text-field>
-
-        <v-divider></v-divider>
-
+              <v-divider></v-divider>
+            </v-col>
+          </v-row>
+        </v-container>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
@@ -27,7 +39,7 @@
               dialog = false;
             "
           >
-            Do It
+            Save
           </v-btn>
         </v-card-actions>
       </v-card>

@@ -8,10 +8,14 @@
       <v-row>
         <template>
           <v-col cols="12">
-            <h2 class="text-h3">{{ title }}</h2>
+            <h2 class="text-h3">
+              {{ title.charAt(0).toUpperCase() + title.slice(1) }}
+            </h2>
             <v-spacer></v-spacer>
 
-            <div class="text-body-2">{{ body }}</div>
+            <div style="margin-top: 20px" class="text-body-2">
+              {{ body.charAt(0).toUpperCase() + title.slice(1) }}
+            </div>
           </v-col>
         </template>
       </v-row>

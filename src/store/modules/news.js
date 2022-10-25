@@ -15,7 +15,7 @@ const actions = {
     const response = await axios.get(
       "https://jsonplaceholder.typicode.com/posts"
     );
-    commit("setNews", response.data);
+    commit("allNews", response.data);
   },
 
   async addNews({ commit }, { title, body }) {
@@ -33,7 +33,7 @@ const actions = {
 };
 
 const mutations = {
-  setNews: (state, news) => (state.news = news),
+  allNews: (state, news) => (state.news = news),
   addNews: (state, newItem) => state.news.unshift(newItem),
   removeNews: (state, id) =>
     (state.news = state.news.filter((item) => item.id !== id)),

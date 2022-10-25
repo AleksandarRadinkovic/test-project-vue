@@ -24,6 +24,12 @@ npm install -g json-server
 json-server --watch db.json
 ```
 
+### Only two users
+
+```
+user user and admin admin
+```
+
 ### Compiles and minifies for production
 
 ```

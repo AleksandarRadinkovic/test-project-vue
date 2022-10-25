@@ -21,6 +21,11 @@ export default new Router({
       path: "/news/:id/",
       name: "news_details",
       component: () => import("@/components/NewsDetails.vue"),
-    }
+    },
+    {
+      path: "/update/:id/",
+      name: "news_details",
+      component: () => import("@/components/UpdateNews.vue"),
+    },
   ],
 });
